@@ -22,7 +22,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/user/login", formData);
+      const res = await axios.post("https://bill-management-zk4k.onrender.com/user/login", formData);
 
       localStorage.setItem("token", res.data.accesstoken || res.data.token);
 
