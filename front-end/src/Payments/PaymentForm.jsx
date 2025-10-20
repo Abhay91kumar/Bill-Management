@@ -19,7 +19,7 @@ const PaymentForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/payment/create",
+        "https://bill-management-zk4k.onrender.com/api/payment/create",
         formData,
         // { withCredentials: true } 
       );
