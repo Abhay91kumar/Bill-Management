@@ -24,10 +24,11 @@ const userCtrl = {
             });
             await newUser.save()
 
-            const accesstoken = createAccessToken({
-                id: user._id,
-                role: user.role
-            });
+        const accesstoken = createAccessToken({
+                    id: newUser._id,
+                    role: newUser.role
+                });
+
             const refreshToken = createRefreshToken({ id: newUser.id })
 
             res.cookie('refreshtoken', refreshToken, {
