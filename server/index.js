@@ -9,7 +9,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const Port = process.env.PORT || 5000;
 const app = express();
 
-const allowedOrigin = 'http://localhost:3000';
+const allowedOrigin = 'https://kharti.netlify.app/';
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
