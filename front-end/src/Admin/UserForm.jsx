@@ -20,7 +20,7 @@ const UserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/user/register", formData);
+      const res = await axios.post("https://bill-management-zk4k.onrender.com/user/register", formData);
       if (res.data.msg) {
         toast.success( res.data.msg)
 
