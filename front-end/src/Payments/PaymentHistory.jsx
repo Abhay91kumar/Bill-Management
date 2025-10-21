@@ -13,7 +13,7 @@ const PaymentHistory = () => {
 
   const fetchPayments = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/payment");
+      const res = await axios.get("https://bill-management-zk4k.onrender.com/api/payment",{ withCredentials: true });
       setPayments(res.data);
     } catch (err) {
       console.error("Error fetching payments:", err);
@@ -51,7 +51,7 @@ const PaymentHistory = () => {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Father's Name</th>
+                <th>Purpose</th>
                 <th>Amount</th>
                 <th>Mode</th>
                 <th>Phone</th>

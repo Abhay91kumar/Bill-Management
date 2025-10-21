@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// const cookiesParser=require('cookie-parser');
+const cookiesParser=require('cookie-parser');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '.env') });
@@ -9,14 +9,14 @@ require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const Port = process.env.PORT || 5000;
 const app = express();
 
+app.use(express.json());
+app.use(cookiesParser());
+
 const allowedOrigin = 'http://localhost:3000';
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
 }));
-
-app.use(express.json());
-// app.use(cookiesParser());
 
 
 app.listen(Port, () => {

@@ -25,21 +25,21 @@ const userCtrl = {
             await newUser.save()
 
             const accesstoken = createAccessToken({
-                id: user._id,
-                role: user.role
+                id: newUser._id,
+                role: newUser.role
             });
-            const refreshToken = createRefreshToken({ id: newUser.id })
+            const refreshToken = createRefreshToken({ id: newUser._id })
 
             res.cookie('refreshtoken', refreshToken, {
                 httpOnly: true,
-                // secure: true,
-                // sameSite: 'None',
+                 secure: true,
+                 sameSite: 'none',
                 path: '/user/refresh_token'
             })
 
             res.json({
                 msg: "✅ Registration successful!",
-                accesstoken 
+                accesstoken
             })
 
         } catch (err) {
@@ -71,13 +71,16 @@ const userCtrl = {
             if (password !== user.password)
                 return res.status(400).json({ msg: "Incorrect password." });
 
-            const accesstoken = createAccessToken({ id: user._id,role: user.role })
-            const refreshtoken = createRefreshToken({ id: user.id })
+            const accesstoken = createAccessToken({ id: user._id, role: user.role })
+            const refreshtoken = createRefreshToken({ id: user._id })
 
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
+                secure: true,       // ✅ only works over HTTPS
+                sameSite: 'none',   // ✅ allow cross-site requests
                 path: '/user/refresh_token'
             });
+
 
             res.json({ accesstoken });
 

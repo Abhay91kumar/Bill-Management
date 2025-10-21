@@ -22,9 +22,13 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/user/login", formData);
+      const res = await axios.post("https://bill-management-zk4k.onrender.com/user/login",
+         formData,
+        { withCredentials: true });
 
       localStorage.setItem("token", res.data.accesstoken || res.data.token);
+      console.log("Acc ",res.data.accesstoken)
+      console.log("To ",res.data.token)
 
       toast.success("✅ Login successful! Redirecting to payment...");
 
