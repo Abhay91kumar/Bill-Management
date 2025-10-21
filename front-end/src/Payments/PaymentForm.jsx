@@ -19,7 +19,7 @@ const PaymentForm = () => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.post(
+      await axios.post(
         "https://bill-management-zk4k.onrender.com/api/payment/create",
         formData,
          {headers: { Authorization: token}, withCredentials: true } 
