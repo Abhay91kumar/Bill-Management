@@ -15,7 +15,7 @@ const AdminPage = () => {
         try {
             const token = localStorage.getItem("token");
             const res = await axios.get("https://bill-management-zk4k.onrender.com/user/admin", {
-                headers: { Authorization: `Bearer ${token}` },
+                headers: { Authorization: token },
             },{ withCredentials: true });
             setAdmin(res.data);
         } catch (err) {
