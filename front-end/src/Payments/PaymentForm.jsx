@@ -17,11 +17,12 @@ const PaymentForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
         "https://bill-management-zk4k.onrender.com/api/payment/create",
         formData,
-         { withCredentials: true } 
+         {headers: { Authorization: token}, withCredentials: true } 
       );
       alert("Payment record saved successfully!");
       setFormData({
