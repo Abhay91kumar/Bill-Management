@@ -12,9 +12,10 @@ const PaymentHistory = () => {
   }, []);
 
   const fetchPayments = async () => {
+    const token = localStorage.getItem("token");
     try {
       const res = await axios.get("https://bill-management-zk4k.onrender.com/api/payment",
-        { withCredentials: true });
+        { headers: { Authorization: token},withCredentials: true });
       setPayments(res.data);
     } catch (err) {
       console.error("Error fetching payments:", err);
