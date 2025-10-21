@@ -11,7 +11,7 @@ const paymentCtrl = {
             }
             
             const paymentData = { name, fatherName, amount, mode ,phone};
-            const newPayment = new Payment(paymentData);
+            const newPayment = new Payment({userId: req.user.id,},paymentData);
             await newPayment.save();
 
             // Send SMS automatically
@@ -31,7 +31,7 @@ const paymentCtrl = {
 
     getPayments: async (req, res) => {
         try {
-            const payments = await Payment.find().sort({ createdAt: -1 });
+            const payments = await Payment.find({userId: req.user.id}).sort({ createdAt: -1 });
             res.json(payments);
         } catch (err) {
             res.status(500).json({ msg: err.message });
