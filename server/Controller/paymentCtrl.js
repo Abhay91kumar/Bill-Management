@@ -32,6 +32,7 @@ const paymentCtrl = {
 
     getPayments: async (req, res) => {
         try {
+            const user_id = req.user.id;
             const payments = await Payment.find({user_id}).sort({ createdAt: -1 });
             res.json(payments);
         } catch (err) {
