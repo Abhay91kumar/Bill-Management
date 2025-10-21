@@ -14,7 +14,7 @@ const paymentCtrl = {
                 return res.status(400).json({ success: false, msg: "Please fill all required fields." });
             }
             
-            const paymentData = { name, fatherName, amount, mode ,phone,user_id};
+            const paymentData = { name, fatherName, amount, mode ,phone,user: user_id};
             console.log("Saving payment:", paymentData);
             
             const newPayment = new Payment(paymentData);
