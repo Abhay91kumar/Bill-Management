@@ -31,10 +31,10 @@ const paymentCtrl = {
             });
 
         } catch (err) {
-        console.error("Create Payment Error:", err);
-            
-        res.status(500).json({ success: false, msg: err.message });
-    },
+      console.error("Create Payment Error:", err);
+      res.status(500).json({ success: false, msg: err.message });
+    }
+},
 
     getPayments: async (req, res) => {
         try {
