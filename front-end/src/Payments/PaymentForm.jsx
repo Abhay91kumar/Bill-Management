@@ -17,11 +17,11 @@ const PaymentForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
          "https://bill-management-zk4k.onrender.com/api/payment/create",
-       // "http://localhost:5000/api/payment/create",
+        //"http://localhost:5000/api/payment/create",
         formData,
         { headers: { Authorization: token }, withCredentials: true }
       );
@@ -33,7 +33,7 @@ const PaymentForm = () => {
         mode: "",
         phone: "",
       });
-      console.log(res.data); 
+      console.log(res.data);
     } catch (err) {
       console.error("Axios error:", err);
 
