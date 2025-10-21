@@ -20,8 +20,8 @@ const PaymentForm = () => {
    const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
-        // "https://bill-management-zk4k.onrender.com/api/payment/create",
-        "http://localhost:5000/api/payment/create",
+         "https://bill-management-zk4k.onrender.com/api/payment/create",
+       // "http://localhost:5000/api/payment/create",
         formData,
         { headers: { Authorization: token }, withCredentials: true }
       );
