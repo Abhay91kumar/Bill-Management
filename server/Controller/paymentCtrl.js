@@ -4,14 +4,15 @@ const { sendSMS } = require('../Middleware/sendSMS');
 const paymentCtrl = {
     createPayment: async (req, res) => {
         try {
+            const user_id = req.user.id;
             const { name, fatherName, amount, mode, phone } = req.body;
             
             if (!name || !fatherName || !amount || !mode || !phone) {
                 return res.status(400).json({ success: false, msg: "Please fill all required fields." });
             }
             
-            const paymentData = { name, fatherName, amount, mode ,phone};
-            const newPayment = new Payment({userId: req.user.id,},paymentData);
+            const paymentData = { name, fatherName, amount, mode ,phone,user_id};
+            const newPayment = new Payment(paymentData);
             await newPayment.save();
 
             // Send SMS automatically
@@ -31,7 +32,7 @@ const paymentCtrl = {
 
     getPayments: async (req, res) => {
         try {
-            const payments = await Payment.find({userId: req.user.id}).sort({ createdAt: -1 });
+            const payments = await Payment.find({user_id}).sort({ createdAt: -1 });
             res.json(payments);
         } catch (err) {
             res.status(500).json({ msg: err.message });
@@ -41,6 +42,7 @@ const paymentCtrl = {
     // ✏️ Update payment
     updatePayment: async (req, res) => {
         try {
+            const user_id = req.user.id;
             const { name, fatherName, amount, mode } = req.body;
 
             const updated = await Payment.findByIdAndUpdate(
