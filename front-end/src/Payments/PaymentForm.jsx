@@ -24,7 +24,14 @@ const PaymentForm = () => {
          { withCredentials: true } 
       );
       alert("Payment record saved successfully!");
-      console.log(res.data);
+      setFormData({
+  name: "",
+  fatherName: "",
+  amount: "",
+  mode: "",
+  phone: "",
+});
+      
     } catch (err) {
       console.error("Axios error:", err);
 
