@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cookiesParser());
 
-const allowedOrigin = 'http://localhost:3000';
+const allowedOrigin = 'https://kharti.netlify.app';
 app.use(cors({
   origin: allowedOrigin,
   credentials: true
