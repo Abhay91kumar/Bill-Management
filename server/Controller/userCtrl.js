@@ -52,7 +52,7 @@ const userCtrl = {
             const rf_token = req.cookies.refreshtoken
 
             if (!rf_token) return res.status(400).json({ msg: "Please Login or Registers.." })
-            jwt.verify(rf_token, process.env.Refresh_Secret, (err, user) => {
+            jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
                 if (err) return res.status(400).json({ msg: "Please Login or Register" })
                 const accesstoken = createAccessToken({ id: user._id })
                 res.json({ user, accesstoken })
@@ -118,10 +118,10 @@ const userCtrl = {
 }
 
 const createAccessToken = (payload) => {
-    return jwt.sign(payload, process.env.Access_Secret, { expiresIn: '10h' });
+    return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10h' });
 
 }
 const createRefreshToken = (payload) => {
-    return jwt.sign(payload, process.env.Refresh_Secret, { expiresIn: '24h' });
+    return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '24h' });
 }
 module.exports = userCtrl
