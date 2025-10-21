@@ -8,7 +8,7 @@ const paymentCtrl = {
             const { name, fatherName, amount, mode, phone } = req.body;
 
             console.log("req.user:", req.user);
-            console.log("Form data received:", { name, fatherName, amount, mode, phone });
+         //   console.log("Form data received:", { name, fatherName, amount, mode, phone });
             
             if (!name || !fatherName || !amount || !mode || !phone) {
                 return res.status(400).json({ success: false, msg: "Please fill all required fields." });
