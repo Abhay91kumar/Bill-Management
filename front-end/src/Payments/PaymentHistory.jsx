@@ -34,6 +34,10 @@ const PaymentHistory = () => {
     };
     return new Date(dateString).toLocaleString(undefined, options);
   };
+  const totalAmount = payments.reduce(
+    (sum, payment) => sum + Number(payment.amount || 0),
+    0
+  );
 
   return (
     <div className="payment-history-container">
@@ -73,6 +77,13 @@ const PaymentHistory = () => {
                   <td>{formatDate(p.createdAt)}</td>
                 </tr>
               ))}
+              <tr className="total-row">
+                <td colSpan="3" style={{ textAlign: "right", fontWeight: "bold" }}>
+                  Total Collection:
+                </td>
+                <td style={{ fontWeight: "bold" }}>₹{totalAmount}</td>
+                <td colSpan="3"></td>
+              </tr>
             </tbody>
           </table>
         </div>
