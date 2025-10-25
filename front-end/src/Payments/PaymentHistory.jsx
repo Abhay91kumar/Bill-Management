@@ -52,6 +52,7 @@ const PaymentHistory = () => {
           <table className="payment-history-table">
             <thead>
               <tr>
+                <th>S.No</th>
                 <th>Name</th>
                 <th>Purpose</th>
                 <th>Amount</th>
@@ -61,8 +62,9 @@ const PaymentHistory = () => {
               </tr>
             </thead>
             <tbody>
-              {payments.map((p) => (
+              {payments.map((p,index) => (
                 <tr key={p._id}>
+                  <td>{index + 1}</td>
                   <td>{p.name}</td>
                   <td>{p.fatherName}</td>
                   <td>{p.amount}</td>
